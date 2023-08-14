@@ -3,32 +3,20 @@ from tkinter import messagebox
 
 
 def ButtonClick(button):
-    global x_o, flag
+    global throw, flag
     button["bg"] = "#2ec4b6"
-    if button["text"] == "" and x_o == True:
+    if button["text"] == "" and throw == True:
         button["text"] = "X"
-        x_o = False
+        throw = False
         checkforwin()
         flag = flag+1
-    elif button["text"] == "" and x_o == False:
+    elif button["text"] == "" and throw == False:
         button["text"] = "O"
-        x_o = True
+        throw = True
         checkforwin()
         flag = flag+1
     else:
-        messagebox.showinfo("Tic Tac Toe", "Player has already entered!")
-
-
-"""
-1 2 3
-4 5 6
-7 8 9
-1 5 9
-3 5 7
-1 4 7
-2 5 8
-3 6 9
-"""
+        messagebox.showinfo("Tic Tac Toe", "This slot is taken!")
 
 
 def checkforwin():
@@ -38,13 +26,13 @@ def checkforwin():
     elif button1["text"] == "O" and button2["text"] == "O" and button3["text"] == "O" or button4["text"] == "O" and button5["text"] == "O" and button6["text"] == "O" or button7["text"] == "O" and button8["text"] == "O" and button9["text"] == "O" or button1["text"] == "O" and button5["text"] == "O" and button9["text"] == "O" or button3["text"] == "O" and button5["text"] == "O" and button7["text"] == "O" or button1["text"] == "O" and button4["text"] == "O" and button7["text"] == "O" or button2["text"] == "O" and button5["text"] == "O" and button8["text"] == "O" or button3["text"] == "O" and button6["text"] == "O" and button9["text"] == "O":
         messagebox.showinfo("Tic Tac Toe", "Player O won!")
     elif flag == 8:
-        messagebox.showinfo("Tic Tac Toe", "Game Tied")
+        messagebox.showinfo("Tic Tac Toe", "Tie Match")
 
 
 main = Tk()
 main.title("Tic Tac Toe")
 
-x_o = True
+throw = True
 flag = 0
 
 button1 = Button(main, text="", font=("arial", 60, "bold"),
